@@ -30,7 +30,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/player2"
+                android:id="@+id/player1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -45,7 +45,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/buttonPlayer2"
+                android:id="@+id/buttonPlayer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30px"
@@ -64,7 +64,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/player1"
+                android:id="@+id/player2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -79,7 +79,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/buttonPlayer1"
+                android:id="@+id/buttonPlayer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30px"
@@ -107,7 +107,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#3F51B5"
-        android:enabled="false"
         android:text="Start Game"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#E91E63" />
