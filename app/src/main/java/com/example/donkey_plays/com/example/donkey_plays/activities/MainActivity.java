@@ -1,23 +1,19 @@
-package com.example.donkey_plays;
+package com.example.donkey_plays.com.example.donkey_plays.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.donkey_plays.com.example.donkey_plays.activities.VoiceGameIntroductionActivity;
+import com.example.donkey_plays.R;
 import com.example.donkey_plays.com.example.donkey_plays.models.Game;
 import com.example.donkey_plays.com.example.donkey_plays.models.GameState;
 import com.example.donkey_plays.com.example.donkey_plays.models.Player;
 import com.example.donkey_plays.com.example.donkey_plays.services.PlayerService;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
         buttonStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), VoiceGameIntroductionActivity.class);
+                Game game = GameState.getGame();
+                game.loadMinigames();
+                GameState.setGame(game);
+                Intent i = new Intent(MainActivity.this, IntroductionActivity.class);
+                i.putExtra("newMinigame", true);
                 startActivity(i);
             }
         });

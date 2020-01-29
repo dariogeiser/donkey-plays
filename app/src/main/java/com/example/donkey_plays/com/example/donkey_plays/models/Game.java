@@ -1,6 +1,8 @@
 package com.example.donkey_plays.com.example.donkey_plays.models;
 
 import com.example.donkey_plays.R;
+import com.example.donkey_plays.com.example.donkey_plays.activities.VoiceBattlerActivity;
+import com.example.donkey_plays.com.example.donkey_plays.services.PlayerService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,20 +11,22 @@ import java.util.Random;
 public class Game {
     private List<Player> players;
     private List<Minigame> minigames;
+    private Minigame currentMinigame;
 
     public Game () {
-        this.players = new ArrayList<Player>();
-        this.minigames = new ArrayList<Minigame>();
-        loadMinigames();
+        this.players = new ArrayList<>();
+        this.minigames = new ArrayList<>();
     }
 
-    private void loadMinigames() {
-        minigames.add(new Minigame(R.layout.voice_battler_introduction));
+    public void loadMinigames() {
+        minigames.add(new Minigame(R.layout.voice_battler_introduction, VoiceBattlerActivity.class, R.layout.voice_battler_result));
+       // minigames.add(new Minigame(R.layout.step_counter_introduction, R.layout.step_counter, R.layout.step_counter_result));
     }
 
     public Minigame getNewMinigame() {
         Random rand = new Random();
         Minigame randomMiniGame = minigames.get(rand.nextInt(minigames.size()));
+        this.currentMinigame = randomMiniGame;
         minigames.remove(randomMiniGame);
         return randomMiniGame;
     }
@@ -42,6 +46,10 @@ public class Game {
         return false;
     }
 
+    public Minigame getCurrentMinigame() {
+        return currentMinigame;
+    }
+
     public boolean deletePlayer(Player player){
         return players.remove(player);
     }
@@ -49,4 +57,6 @@ public class Game {
     public List<Player> getPlayers() {
         return players;
     }
+
+
 }

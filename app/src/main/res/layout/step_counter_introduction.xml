@@ -3,11 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Voice Battler"
+        android:text="Step Counter"
         android:textAlignment="center"
         android:textSize="36sp" />
 
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10px"
         android:layout_weight="1.5"
-        android:text="Description: Scream as loud as you can"
+        android:text="Description: Take as many steps as you can"
         android:textAlignment="viewStart"
         android:textSize="24sp" />
 

@@ -1,7 +1,11 @@
 package com.example.donkey_plays.com.example.donkey_plays.models;
 
 public class GameState {
-    private static Game game = new Game();
+    private static Game game;
+
+    static {
+        game = new Game();
+    }
 
     public GameState() {
 
