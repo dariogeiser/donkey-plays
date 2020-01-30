@@ -67,7 +67,9 @@ public class VoiceBattlerActivity extends AppCompatActivity {
                     double amplitude = mRecorder.getMaxAmplitude();
                     double dB = 20.0 * Math.log10(amplitude);
                     allVoices.add(dB);
-                    voice.setText(Math.round(dB) + " dB");
+                    if(dB >= 0) {
+                        voice.setText(Math.round(dB) + " dB");
+                    }
                     timeLeft.setText("Time Left: " + millisUntilFinished / 1000 + " seconds");
                 }
 

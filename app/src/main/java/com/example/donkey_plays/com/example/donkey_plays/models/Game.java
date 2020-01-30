@@ -21,7 +21,7 @@ public class Game {
 
     public void loadMinigames() {
         minigames.add(new Minigame(R.layout.voice_battler_introduction, VoiceBattlerActivity.class, R.layout.voice_battler_result));
-        //minigames.add(new Minigame(R.layout.step_counter_introduction, StepCounterActivity.class, R.layout.step_counter_result));
+        minigames.add(new Minigame(R.layout.step_counter_introduction, StepCounterActivity.class, R.layout.step_counter_result));
     }
 
     public Minigame getNewMinigame() {

@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
+                    0);
+
+        }
+
 
         buttonPlayer1 = findViewById(R.id.buttonPlayer1);
         buttonPlayer2 = findViewById(R.id.buttonPlayer2);
