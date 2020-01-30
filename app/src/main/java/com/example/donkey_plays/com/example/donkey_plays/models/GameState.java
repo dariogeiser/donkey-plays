@@ -18,4 +18,8 @@ public class GameState {
     public static void setGame(Game game) {
         GameState.game = game;
     }
+
+    public static void resetGame(){
+        game = new Game();
+    }
 }

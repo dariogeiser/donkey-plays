@@ -34,6 +34,25 @@ public class PlayerService {
         return isDeleted;
     }
 
+    public void increaseScore(String playerName){
+        for(Player player: this.getPlayers()){
+            if(player.getName().equals(playerName)){
+                player.increaseScore();
+            }
+        }
+        GameState.setGame(game);
+    }
+
+    public Player getWinner(){
+        Player winner = null;
+        for(Player player: getPlayers() ){
+            if (winner == null || player.getScore() > winner.getScore()) {
+                winner = player;
+            }
+        }
+        return winner;
+    }
+
     public List<Player> getPlayers() {
         return game.getPlayers();
     }

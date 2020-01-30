@@ -1,6 +1,7 @@
 package com.example.donkey_plays.com.example.donkey_plays.models;
 
 import com.example.donkey_plays.R;
+import com.example.donkey_plays.com.example.donkey_plays.activities.StepCounterActivity;
 import com.example.donkey_plays.com.example.donkey_plays.activities.VoiceBattlerActivity;
 import com.example.donkey_plays.com.example.donkey_plays.services.PlayerService;
 
@@ -20,7 +21,7 @@ public class Game {
 
     public void loadMinigames() {
         minigames.add(new Minigame(R.layout.voice_battler_introduction, VoiceBattlerActivity.class, R.layout.voice_battler_result));
-       // minigames.add(new Minigame(R.layout.step_counter_introduction, R.layout.step_counter, R.layout.step_counter_result));
+        //minigames.add(new Minigame(R.layout.step_counter_introduction, StepCounterActivity.class, R.layout.step_counter_result));
     }
 
     public Minigame getNewMinigame() {
@@ -42,6 +43,13 @@ public class Game {
 
         if(!playerAlreadyExistsis && players.size() < 2 && !newPlayer.getName().equals("")){
             return players.add(newPlayer);
+        }
+        return false;
+    }
+
+    public boolean hasNewMiniGame(){
+        if(this.minigames.size() > 0 ){
+            return true;
         }
         return false;
     }

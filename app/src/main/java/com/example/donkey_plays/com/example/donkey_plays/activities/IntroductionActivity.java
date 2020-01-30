@@ -49,8 +49,6 @@ public class IntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Game game = GameState.getGame();
-                game.loadMinigames();
-                GameState.setGame(game);
                 Intent i = new Intent(IntroductionActivity.this, game.getCurrentMinigame().getGameActivity());
                 startActivity(i);
             }

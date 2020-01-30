@@ -20,7 +20,7 @@ public class Minigame {
 
     private Player currentPlayer;
     private List<Player> allPlayers;
-    private HashMap<String, Integer> standing;
+    private HashMap<String, Double> standing;
 
     public Minigame(int id, Class gameActivity, int resultRef) {
         this.id = id;
@@ -55,8 +55,18 @@ public class Minigame {
             return true;
     }
 
-    public void addStanding(String name, int value){
-        this.standing.put("name", value);
+    public HashMap.Entry<String, Double> getWinner() {
+        HashMap.Entry<String, Double> maxEntry = null;
+        for(HashMap.Entry<String, Double> entry: standing.entrySet() ){
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
+                maxEntry = entry;
+            }
+        }
+        return maxEntry;
+    }
+
+    public void addStanding(String name, Double value){
+        this.standing.put(name, value);
     }
 
     public Class getGameActivity() {
@@ -67,7 +77,7 @@ public class Minigame {
         return resultRef;
     }
 
-    public HashMap<String, Integer> getStanding() {
+    public HashMap<String, Double> getStanding() {
         return standing;
     }
 

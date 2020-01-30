@@ -1,8 +1,11 @@
 package com.example.donkey_plays.com.example.donkey_plays.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         this.getSupportActionBar().hide();
         setContentView(R.layout.start);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},
+                    0);
+
+        }
+
 
         buttonPlayer1 = findViewById(R.id.buttonPlayer1);
         buttonPlayer2 = findViewById(R.id.buttonPlayer2);
@@ -51,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                String playerName = player1Input.getEditText().getText().toString();
 
-               if(playerService.addPlayer(new Player(playerName, 0))){
+               if(playerService.addPlayer(new Player(playerName))){
                    numberOfPlayers.setText("Number of Players: " + playerService.getPlayers().size());
                }
             }
@@ -62,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String playerName = player2Input.getEditText().getText().toString();
 
-                if(playerService.addPlayer(new Player(playerName, 0))){
+                if(playerService.addPlayer(new Player(playerName))){
                     numberOfPlayers.setText("Number of Players: " + playerService.getPlayers().size());
                 }
             }
