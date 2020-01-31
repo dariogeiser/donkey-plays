@@ -7,6 +7,8 @@ import android.os.IBinder;
 
 import com.example.donkey_plays.R;
 
+
+// Quelle: https://stackoverflow.com/questions/8209858/android-background-music-service/8209975#8209975
 public class MusicService extends Service {
     private static final String TAG = null;
     MediaPlayer player;
