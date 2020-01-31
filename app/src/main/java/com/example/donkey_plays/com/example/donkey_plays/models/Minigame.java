@@ -39,7 +39,7 @@ public class Minigame {
         this.id = id;
     }
 
-    private List<Player> getRandomizePlayersOrder(){
+    private List<Player> getRandomizePlayersOrder() {
         PlayerService playerService = new PlayerService();
         List<Player> players = new ArrayList<>(playerService.getPlayers());
         Collections.shuffle(players);
@@ -47,17 +47,17 @@ public class Minigame {
     }
 
     public boolean setCurrentPlayer() {
-        if (this.allPlayers.size() == 0){
+        if (this.allPlayers.size() == 0) {
             return false;
         }
-            this.currentPlayer = this.allPlayers.get(0);
-            this.allPlayers.remove(0);
-            return true;
+        this.currentPlayer = this.allPlayers.get(0);
+        this.allPlayers.remove(0);
+        return true;
     }
 
     public HashMap.Entry<String, Double> getWinner() {
         HashMap.Entry<String, Double> maxEntry = null;
-        for(HashMap.Entry<String, Double> entry: standing.entrySet() ){
+        for (HashMap.Entry<String, Double> entry : standing.entrySet()) {
             if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
                 maxEntry = entry;
             }
@@ -65,7 +65,7 @@ public class Minigame {
         return maxEntry;
     }
 
-    public void addStanding(String name, Double value){
+    public void addStanding(String name, Double value) {
         this.standing.put(name, value);
     }
 

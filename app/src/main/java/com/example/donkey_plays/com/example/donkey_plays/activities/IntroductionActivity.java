@@ -22,13 +22,14 @@ public class IntroductionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getSupportActionBar().hide();
+        hideSystemUI();
         Intent currentIntent = getIntent();
         boolean newMiniGame = currentIntent.getExtras().getBoolean("newMinigame");
 
         Game game = GameState.getGame();
 
         Minigame currentMinigame;
-        if(newMiniGame) {
+        if (newMiniGame) {
             currentMinigame = game.getNewMinigame();
         } else {
             currentMinigame = game.getCurrentMinigame();
@@ -54,6 +55,17 @@ public class IntroductionActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void hideSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 
 }

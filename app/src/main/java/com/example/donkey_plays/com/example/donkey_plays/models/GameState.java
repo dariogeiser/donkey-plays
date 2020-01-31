@@ -19,7 +19,7 @@ public class GameState {
         GameState.game = game;
     }
 
-    public static void resetGame(){
+    public static void resetGame() {
         game = new Game();
     }
 }

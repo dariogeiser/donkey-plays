@@ -15,6 +15,7 @@ import com.example.donkey_plays.R;
 import com.example.donkey_plays.com.example.donkey_plays.models.Game;
 import com.example.donkey_plays.com.example.donkey_plays.models.GameState;
 import com.example.donkey_plays.com.example.donkey_plays.models.Player;
+import com.example.donkey_plays.com.example.donkey_plays.services.MusicService;
 import com.example.donkey_plays.com.example.donkey_plays.services.PlayerService;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -36,11 +37,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getSupportActionBar().hide();
+        hideSystemUI();
         setContentView(R.layout.start);
+
+        Intent svc = new Intent(this, MusicService.class);
+        startService(svc);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},
+                    0);
+
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.VIBRATE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.VIBRATE},
                     0);
 
         }
@@ -66,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
         buttonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String playerName = player1Input.getEditText().getText().toString();
+                String playerName = player1Input.getEditText().getText().toString();
 
-               if(playerService.addPlayer(new Player(playerName))){
-                   numberOfPlayers.setText("Number of Players: " + playerService.getPlayers().size());
-               }
+                if (playerService.addPlayer(new Player(playerName))) {
+                    numberOfPlayers.setText("Number of Players: " + playerService.getPlayers().size());
+                }
             }
         });
 
@@ -79,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String playerName = player2Input.getEditText().getText().toString();
 
-                if(playerService.addPlayer(new Player(playerName))){
+                if (playerService.addPlayer(new Player(playerName))) {
                     numberOfPlayers.setText("Number of Players: " + playerService.getPlayers().size());
                 }
             }
@@ -96,7 +108,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 
+    private void hideSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
 
 }

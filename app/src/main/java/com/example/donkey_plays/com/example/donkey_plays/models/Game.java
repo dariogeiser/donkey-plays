@@ -14,7 +14,7 @@ public class Game {
     private List<Minigame> minigames;
     private Minigame currentMinigame;
 
-    public Game () {
+    public Game() {
         this.players = new ArrayList<>();
         this.minigames = new ArrayList<>();
     }
@@ -32,23 +32,23 @@ public class Game {
         return randomMiniGame;
     }
 
-    public boolean addPlayer(Player newPlayer){
+    public boolean addPlayer(Player newPlayer) {
         newPlayer.setName(newPlayer.getName().trim());
         boolean playerAlreadyExistsis = false;
-        for(Player player : players){
-            if(player.getName().equals(newPlayer.getName())){
+        for (Player player : players) {
+            if (player.getName().equals(newPlayer.getName())) {
                 playerAlreadyExistsis = true;
             }
         }
 
-        if(!playerAlreadyExistsis && players.size() < 2 && !newPlayer.getName().equals("")){
+        if (!playerAlreadyExistsis && players.size() < 2 && !newPlayer.getName().equals("")) {
             return players.add(newPlayer);
         }
         return false;
     }
 
-    public boolean hasNewMiniGame(){
-        if(this.minigames.size() > 0 ){
+    public boolean hasNewMiniGame() {
+        if (this.minigames.size() > 0) {
             return true;
         }
         return false;
@@ -58,7 +58,7 @@ public class Game {
         return currentMinigame;
     }
 
-    public boolean deletePlayer(Player player){
+    public boolean deletePlayer(Player player) {
         return players.remove(player);
     }
 

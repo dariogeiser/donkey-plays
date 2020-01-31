@@ -28,24 +28,29 @@ public class PlayerService {
     }
 
 
-    public boolean deletePlayer(Player player){
+    public boolean deletePlayer(Player player) {
         boolean isDeleted = this.game.deletePlayer(player);
         GameState.setGame(game);
         return isDeleted;
     }
 
-    public void increaseScore(String playerName){
-        for(Player player: this.getPlayers()){
-            if(player.getName().equals(playerName)){
+    public void increaseScore(String playerName) {
+        for (Player player : this.getPlayers()) {
+            if (player.getName().equals(playerName)) {
                 player.increaseScore();
             }
         }
         GameState.setGame(game);
     }
 
-    public Player getWinner(){
+    public Player getWinner() {
         Player winner = null;
-        for(Player player: getPlayers() ){
+        if (getPlayers().get(0).getScore() == getPlayers().get(1).getScore()) {
+            return null;
+        }
+        ;
+
+        for (Player player : getPlayers()) {
             if (winner == null || player.getScore() > winner.getScore()) {
                 winner = player;
             }
